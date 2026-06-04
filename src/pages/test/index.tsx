@@ -1,6 +1,6 @@
 import { useEffect, useState, type FC } from 'react';
 
-import { BACKEND_API_V1 } from '@shared/configs';
+import { testFetch } from './fetch';
 
 export const TestPage: FC = () => {
   const [status, setStatus] = useState<string>('Loading...');
@@ -8,7 +8,7 @@ export const TestPage: FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await fetch(`${BACKEND_API_V1}/test`);
+        await testFetch();
         setStatus('Data fetched successfully');
       } catch {
         setStatus('Error fetching data');
