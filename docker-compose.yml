@@ -2,8 +2,8 @@ services:
   frontend:
     image: ${APP_IMAGE:-template-frontend:latest}
     container_name: template_frontend_container
-    ports:
-      - "4173:4173"
+    expose:
+      - "4173"          # доступен только внутри сети app (для nginx), наружу закрыт
     restart: always
     networks:
       - app
