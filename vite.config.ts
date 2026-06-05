@@ -25,5 +25,10 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
+    // preview-сервер (npm run preview, как в Docker) за nginx:
+    // разрешаем проксированный Host, иначе vite отдаёт "Blocked request".
+    preview: {
+      allowedHosts: true,
+    },
   };
 });

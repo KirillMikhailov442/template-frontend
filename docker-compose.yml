@@ -5,3 +5,10 @@ services:
     ports:
       - "4173:4173"
     restart: always
+    networks:
+      - app
+
+# Общая сеть с nginx и бэком (создаётся командой: docker network create app)
+networks:
+  app:
+    external: true
