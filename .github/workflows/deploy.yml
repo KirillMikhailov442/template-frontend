@@ -1,0 +1,70 @@
+name: CICD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: 📦 Build & Push Docker Image
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: 📥 Checkout репозитория
+        uses: actions/checkout@v4
+
+      - name: 🔑 Логин в GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🏗️ Сборка и пуш Docker образа
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+          build-args: |
+            VITE_BACKEND_API_V1=${{ vars.VITE_BACKEND_API_V1 }}
+          tags: ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:latest
+
+  deploy:
+    name: 🚀 Deploy
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+      - name: 📥 Checkout репозитория
+        uses: actions/checkout@v4
+
+      - name: 📤 Копируем docker-compose.yml на сервер
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "docker-compose.yml"
+          target: "/root/template-frontend/"
+
+      - name: 🚀 Деплой на сервере
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            echo "${{ secrets.GH_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+            cd /root/template-frontend
+            export APP_IMAGE=ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:latest
+            docker-compose pull frontend
+            docker-compose up -d

@@ -1,10 +1,7 @@
 services:
   frontend:
-    build: .
-    image: template-frontend:latest
+    image: ${APP_IMAGE:-template-frontend:latest}
     container_name: template_frontend_container
     ports:
       - "4173:4173"
     restart: always
-  env_file:
-    - .env
