@@ -1,7 +1,7 @@
 FROM node:22-alpine
 WORKDIR /app
 COPY package*.json ./
-RUN npm i
+RUN npm ci
 COPY . .
 ARG VITE_BACKEND_API_V1
 ENV VITE_BACKEND_API_V1=$VITE_BACKEND_API_V1
