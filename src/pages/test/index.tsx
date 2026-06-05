@@ -1,5 +1,7 @@
 import { useEffect, useState, type FC } from 'react';
 
+import { Button } from '@chakra-ui/react';
+
 import { testFetch } from './fetch';
 
 export const TestPage: FC = () => {
@@ -27,6 +29,7 @@ export const TestPage: FC = () => {
         <p className="text-lg text-gray-700 mb-4">
           Этот проект настроен с Tailwind CSS v4!
         </p>
+        <Button>sds</Button>
 
         <div
           className={`p-6 rounded-lg border-2 ${status.includes('Error') ? 'bg-red-50 border-red-300' : 'bg-green-50 border-green-300'}`}>

@@ -2,3 +2,5 @@
 **/*.html
 # Ignore a specific folder
 node_modules/
+
+/src/main.tsx
