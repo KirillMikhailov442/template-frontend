@@ -23,12 +23,14 @@ const Templates = () => {
 
   const renderTemplateCards = () => {
     return mockData.map(item => {
-       return <TemplateCard key={item.id} {...item} />;
+      return <TemplateCard key={item.id} {...item} />;
     });
   };
-  return <div className=" h-full grow p-5 flex gap-5">
-    {data && renderTemplateCards()}
-  </div>;
+  return (
+      <div className="h-full grow p-5 flex flex-wrap gap-5 content-start justify-evenly">
+        {data && renderTemplateCards()}
+      </div>
+  );
 };
 
 export default Templates;

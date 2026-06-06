@@ -6,7 +6,6 @@ import { AppRoute } from '@shared/constants';
 import MainLayout from '../layouts/main';
 import LayoutWithSidebar from '../layouts/sidebar';
 import Page404 from '@pages/not-found';
-import PageError from '@shared/ui/ErrorMessage';
 import Templates from '@pages/Templates';
 
 
@@ -21,10 +20,6 @@ export const router = createBrowserRouter([
           {
             path: AppRoute.Root,
             element: <TestPage />,
-          },
-          {
-            path: AppRoute.Error,
-            element: <PageError/>
           },
           {
             path: AppRoute.Templates,
