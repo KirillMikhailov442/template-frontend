@@ -5,6 +5,7 @@ import { AppRoute } from '@shared/constants';
 
 import MainLayout from '../layouts/main';
 import LayoutWithSidebar from '../layouts/sidebar';
+import Page404 from '@pages/not-found';
 
 export const router = createBrowserRouter([
   {
@@ -22,4 +23,8 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: AppRoute.NotFound,
+    element: <Page404/>
+  }
 ]);
