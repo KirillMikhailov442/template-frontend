@@ -8,7 +8,7 @@ import { twMerge } from 'tailwind-merge';
 const LayoutWithSidebar = () => {
   const { isTablet, isPhone } = useDeviceBreakpoint();
   return (
-    <div className={twMerge(!isTablet ? 'flex' : '', 'w-full')}>
+    <div className={twMerge((!isTablet && !isPhone) ? 'flex' : '', 'w-full')}>
       {(!isTablet && !isPhone) ? <Sidebar /> : <HedaerMobile />}
       <Outlet />
     </div>
