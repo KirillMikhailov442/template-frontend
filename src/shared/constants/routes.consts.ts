@@ -1,4 +1,5 @@
 export enum AppRoute {
-  Root = "/",
-  NotFound = "*",
+  Root = '/',
+  Templates = '/templates',
+  NotFound = '*',
 }

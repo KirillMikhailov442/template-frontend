@@ -3,12 +3,23 @@ import { createBrowserRouter } from 'react-router';
 import { TestPage } from '@pages';
 import { AppRoute } from '@shared/constants';
 
+import MainLayout from '../layouts/main';
+import LayoutWithSidebar from '../layouts/sidebar';
+
 export const router = createBrowserRouter([
   {
-    path: AppRoute.Root,
-    element: <TestPage />,
-  },
-  {
-    path: AppRoute.NotFound,
+    element: <MainLayout />,
+    children: [
+      {
+        path: AppRoute.Root,
+        element: <LayoutWithSidebar />,
+        children: [
+          {
+            path: AppRoute.Root,
+            element: <TestPage />,
+          },
+        ],
+      },
+    ],
   },
 ]);
