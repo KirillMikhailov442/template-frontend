@@ -6,10 +6,10 @@ import HedaerMobile from '@widgets/sidebar/mobile';
 import { twMerge } from 'tailwind-merge';
 
 const LayoutWithSidebar = () => {
-  const { isTablet } = useDeviceBreakpoint();
+  const { isTablet, isPhone } = useDeviceBreakpoint();
   return (
     <div className={twMerge(!isTablet ? 'flex' : '', 'w-full')}>
-      {!isTablet ? <Sidebar /> : <HedaerMobile />}
+      {(!isTablet && !isPhone) ? <Sidebar /> : <HedaerMobile />}
       <Outlet />
     </div>
   );
