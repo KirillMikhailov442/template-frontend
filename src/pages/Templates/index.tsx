@@ -1,3 +1,5 @@
+import { Button } from '@chakra-ui/react';
+
 import TemplateCard from './TemplateCard';
 
 const mockData = [
@@ -16,6 +18,11 @@ const mockData = [
     title: 'Шаблон 3',
     imgSrc: '/template.webp',
   },
+  {
+    id: 4,
+    title: 'Шаблон 4',
+    imgSrc: '/template.webp',
+  },
 ];
 
 const Templates = () => {
@@ -27,9 +34,16 @@ const Templates = () => {
     });
   };
   return (
-      <div className="h-full grow p-5 flex flex-wrap gap-5 content-start justify-evenly">
+    <div className="h-full grow p-5">
+      <div className="flex justify-end pb-5">
+        <Button rounded="xl" backgroundColor="var(--color-blue)">
+          Добавить шаблон
+        </Button>
+      </div>
+      <div className="grid w-full gap-5 grid-cols-[repeat(auto-fit,minmax(200px,1fr))] place-items-center">
         {data && renderTemplateCards()}
       </div>
+    </div>
   );
 };
 
