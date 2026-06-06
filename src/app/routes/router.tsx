@@ -7,6 +7,7 @@ import MainLayout from '../layouts/main';
 import LayoutWithSidebar from '../layouts/sidebar';
 import Page404 from '@pages/not-found';
 
+
 export const router = createBrowserRouter([
   {
     element: <MainLayout />,
