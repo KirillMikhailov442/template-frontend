@@ -3,4 +3,5 @@ export enum AppRoute {
   Templates = '/templates',
   Login = '/login',
   NotFound = '*',
+  Error = '/error',
 }
