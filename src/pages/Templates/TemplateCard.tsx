@@ -5,7 +5,7 @@ type IProps = {
 
 const TemplateCard = ({imgSrc, title}: IProps) =>{
   return (
-    <div className="h-[200px] w-[300px] rounded-2xl overflow-hidden flex flex-col">
+    <div className="h-[200px] w-[300px] rounded-2xl overflow-hidden flex flex-col shadow-md">
       <div className="grow w-full">
         <img src={imgSrc} alt={title} className="w-full h-full object-cover" />
       </div>
