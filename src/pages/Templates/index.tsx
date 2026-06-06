@@ -6,22 +6,22 @@ const mockData = [
   {
     id: 1,
     title: 'Шаблон 1',
-    imgSrc: '/template.webp',
+    imgSrc: '/mockTemplate.webp',
   },
   {
     id: 2,
     title: 'Шаблон 2',
-    imgSrc: '/template.webp',
+    imgSrc: '/mockTemplate.webp',
   },
   {
     id: 3,
     title: 'Шаблон 3',
-    imgSrc: '/template.webp',
+    imgSrc: '/mockTemplate.webp',
   },
   {
     id: 4,
     title: 'Шаблон 4',
-    imgSrc: '/template.webp',
+    imgSrc: '/mockTemplate.webp',
   },
 ];
 
