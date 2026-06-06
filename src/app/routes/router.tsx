@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router';
 
 import { TestPage } from '@pages';
+import { DevicesPage } from '@pages';
 import { AppRoute } from '@shared/constants';
 
 import MainLayout from '../layouts/main';
@@ -18,7 +19,7 @@ export const router = createBrowserRouter([
         children: [
           {
             path: AppRoute.Root,
-            element: <TestPage />,
+            element: <DevicesPage />,
           },
         ],
       },
