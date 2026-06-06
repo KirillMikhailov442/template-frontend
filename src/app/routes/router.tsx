@@ -1,40 +1,37 @@
 import { createBrowserRouter } from 'react-router';
 
-import LoginPage from '@pages/login';
-import Page404 from '@pages/not-found';
+import { TestPage } from '@pages';
 import { AppRoute } from '@shared/constants';
 
-import AuthorizationLayout from '../layouts/authorization';
 import MainLayout from '../layouts/main';
 import LayoutWithSidebar from '../layouts/sidebar';
+import Page404 from '@pages/not-found';
+import Templates from '@pages/Templates';
+
 
 export const router = createBrowserRouter([
   {
     element: <MainLayout />,
     children: [
       {
-        path: AppRoute.Login,
-        element: <LoginPage />,
-      },
-      {
-        element: <AuthorizationLayout />,
+        path: AppRoute.Root,
+        element: <LayoutWithSidebar />,
         children: [
           {
             path: AppRoute.Root,
-            element: <LayoutWithSidebar />,
-            children: [
-              {
-                path: AppRoute.Root,
-                element: <div>sdsd</div>,
-              },
-            ],
+            element: <TestPage />,
           },
+          {
+            path: AppRoute.Templates,
+            element: <Templates/>
+
+          }
         ],
       },
     ],
   },
   {
     path: AppRoute.NotFound,
-    element: <Page404 />,
-  },
+    element: <Page404/>
+  }
 ]);
