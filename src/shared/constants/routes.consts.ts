@@ -5,4 +5,5 @@ export enum AppRoute {
   Editor = '/templates/:templateId',
   NotFound = '*',
   Error = '/error',
+  SingleDevice = '/devices/:deviceId',
 }

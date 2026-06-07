@@ -17,6 +17,11 @@ const RightSideBar = () => {
       <Text className="mb-6" fontSize={'xl'}>
         Виджеты
       </Text>
+      <ul>
+        <li>Синий - погода</li>
+        <li>Зеленый - новости</li>
+        <li>Серый - календарь</li>
+      </ul>
       <ul ref={setNodeRef}>
         {catalog.map(widget => (
           <Item
