@@ -1,13 +1,24 @@
 import { IconButton, Menu, Portal } from '@chakra-ui/react';
 import { LucideEdit, LucideMoreVertical, LucideTrash } from 'lucide-react';
+import { useState } from 'react';
+import RemoveTemplateForm from '@widgets/RemoveTemplateForm';
 
 type IProps = {
   imgSrc: string;
   title: string;
+  id: string;
+  onChange: () => void;
 };
 
-const TemplateCard = ({ imgSrc, title }: IProps) => {
+const TemplateCard = ({ imgSrc, title, id, onChange }: IProps) => {
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<boolean>(false);
+
+  const onModalClose = () => {
+    setIsDeleteModalOpen(false);
+  }
+
   return (
+    <>
     <div className="min-w-[200px] max-w-[300px] rounded-2xl overflow-hidden flex flex-col shadow-md relative group">
       <div className="absolute top-2 right-2">
         <Menu.Root>
@@ -23,7 +34,7 @@ const TemplateCard = ({ imgSrc, title }: IProps) => {
                   <LucideEdit />
                   Редактировать
                 </Menu.Item>
-                <Menu.Item value="delete">
+                <Menu.Item value="delete" onClick={() => setIsDeleteModalOpen(true)}>
                   <LucideTrash />
                   Удалить
                 </Menu.Item>
@@ -40,6 +51,14 @@ const TemplateCard = ({ imgSrc, title }: IProps) => {
         {title}
       </div>
     </div>
+      <RemoveTemplateForm
+        isOpen={isDeleteModalOpen}
+        onClose={onModalClose}
+        nodeName={title}
+        nodeId={id}
+        onSuccess={onChange}
+      />
+    </>
   );
 };
 
