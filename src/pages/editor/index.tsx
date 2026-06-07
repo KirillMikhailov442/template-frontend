@@ -36,11 +36,6 @@ const EditorPage = () => {
           const { active, over } = event;
 
           const data = active.data.current;
-
-          if (over.id !== 'board') {
-            return;
-          }
-
           const x =
             Number(active.rect.current.translated?.left) - over.rect.left;
           const y = Number(active.rect.current.translated?.top) - over.rect.top;
