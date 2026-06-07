@@ -22,7 +22,9 @@ const LeftSideBar = () => {
         </Button>
         <Input
           value={templateName}
-          onChange={e => setTemplateName(e.target.value)}
+          onChange={e => {
+            setTemplateName(e.target.value);
+          }}
           placeholder="Название шаблона"
         />
       </header>

@@ -1,14 +1,16 @@
+import MainPage from '@/pages/main';
+
 import { createBrowserRouter } from 'react-router';
 
 import EditorPage from '@pages/editor';
 import LoginPage from '@pages/login';
 import Page404 from '@pages/not-found';
+import Templates from '@pages/Templates';
 import { AppRoute } from '@shared/constants';
 
 import AuthorizationLayout from '../layouts/authorization';
 import MainLayout from '../layouts/main';
 import LayoutWithSidebar from '../layouts/sidebar';
-import Templates from '@pages/Templates';
 
 export const router = createBrowserRouter([
   {
@@ -27,12 +29,12 @@ export const router = createBrowserRouter([
             children: [
               {
                 path: AppRoute.Templates,
-                element: <Templates/>
+                element: <Templates />,
               },
               {
                 path: AppRoute.Root,
-                element: <div>sdsd</div>,
-              }
+                element: <MainPage />,
+              },
             ],
           },
           {

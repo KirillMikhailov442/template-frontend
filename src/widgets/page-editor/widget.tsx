@@ -18,7 +18,6 @@ const snapToGrid = (pos: number) => {
 };
 
 const Widget: FC<WidgetProps> = ({ id, x = 0, y = 0, width, height, text }) => {
-  console.log(text);
   const [positiion, setPosition] = useState({ x, y });
   const { updateWidgetInBoard } = useEditor();
   const color = () => {

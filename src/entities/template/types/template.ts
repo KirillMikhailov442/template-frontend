@@ -1,7 +1,7 @@
-import type { Widget } from '../hooks/use-editor';
+import type { IWidget } from './widget';
 
 export interface ITemplate {
   id: string;
   name: string;
-  widgents: Widget[];
+  widgets: IWidget[];
 }
