@@ -3,6 +3,8 @@ import { CELL_SIZE } from '@/shared/constants';
 import { create } from 'zustand';
 
 export interface EditorState {
+  templateName: string;
+  setTemplateName: (name: string) => void;
   isDragging: boolean;
   setIsDragging: (isDragging: boolean) => void;
 
@@ -24,6 +26,8 @@ const snapToGrid = (pos: number) => {
 };
 
 const useEditor = create<EditorState>()(set => ({
+  templateName: '',
+  setTemplateName: (name: string) => set({ templateName: name }),
   isDragging: false,
   setIsDragging: isDragging => set({ isDragging }),
 
@@ -55,26 +59,7 @@ const useEditor = create<EditorState>()(set => ({
       widgets: state.widgets?.filter(widget => widget.id !== id),
     })),
 
-  widgets: [
-    {
-      id: '1',
-      type: 'text',
-      position: { x: 100, y: 100 },
-      size: { width: 200, height: 400 },
-    },
-    {
-      id: '2',
-      type: 'text',
-      position: { x: 100, y: 100 },
-      size: { width: 200, height: 200 },
-    },
-    {
-      id: '3',
-      type: 'text',
-      position: { x: 100, y: 100 },
-      size: { width: 300, height: 200 },
-    },
-  ],
+  widgets: [],
 }));
 
 export default useEditor;

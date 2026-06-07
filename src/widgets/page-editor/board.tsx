@@ -17,9 +17,9 @@ const BoardWidget = () => {
   return (
     <div className="grow flex items-center justify-center">
       <div
-        className={clsx('w-[600px] h-[900px] bg-[var(--color-white)]', s.board)}
+        className={clsx('w-[450px] h-[800px] bg-[var(--color-white)]', s.board)}
         ref={setNodeRef}>
-        <Stage className={s.stage} width={600} height={900}>
+        <Stage className={s.stage} width={450} height={800}>
           <Layer>
             {widgets.map(widget => (
               <Widget
@@ -29,6 +29,7 @@ const BoardWidget = () => {
                 y={widget.position.y}
                 width={widget.size.width}
                 height={widget.size.height}
+                text={widget.type}
               />
             ))}
           </Layer>

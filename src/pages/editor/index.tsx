@@ -1,7 +1,12 @@
+import useCatalog from '@/entities/template/hooks/use-catalog';
 import useEditor from '@/entities/template/hooks/use-editor';
+import useGetTemplate from '@/entities/template/hooks/use-get-template';
+import PageError from '@/shared/ui/PageError';
 import BoardWidget from '@/widgets/page-editor/board';
 import LeftSideBar from '@/widgets/page-editor/left-side-bar';
 import RightSideBar from '@/widgets/page-editor/right-side-bar/right-side-bar';
+
+import { useParams } from 'react-router';
 
 import {
   DndContext,
@@ -14,6 +19,7 @@ import {
 
 const EditorPage = () => {
   const { addWidgetInBoard } = useEditor();
+  const { removeItem } = useCatalog();
   const sensors = useSensors(
     useSensor(MouseSensor, {
       activationConstraint: {
@@ -28,6 +34,14 @@ const EditorPage = () => {
       },
     }),
   );
+
+  const templateId = useParams<{ templateId: string }>().templateId;
+  const { isLoading, data, isError } = useGetTemplate(templateId);
+
+  if (isError) {
+    return <PageError />;
+  }
+
   return (
     <div className="w-full flex">
       <LeftSideBar />
@@ -53,6 +67,7 @@ const EditorPage = () => {
             position: { x, y },
             size: { width: 200, height: 200 },
           });
+          removeItem(data.id);
         }}>
         <BoardWidget />
         <RightSideBar />
