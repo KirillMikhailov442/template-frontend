@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router';
 
+import EditorPage from '@pages/editor';
 import LoginPage from '@pages/login';
 import Page404 from '@pages/not-found';
 import { AppRoute } from '@shared/constants';
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
                 element: <div>sdsd</div>,
               },
             ],
+          },
+          {
+            path: AppRoute.Editor,
+            element: <EditorPage />,
           },
         ],
       },
