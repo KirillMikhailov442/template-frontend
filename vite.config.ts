@@ -14,6 +14,7 @@ export default defineConfig(({ mode }) => {
         '@features': '/src/features',
         '@entities': '/src/entities',
         '@shared': '/src/shared',
+        '@': '/src',
       },
     },
     server: {
