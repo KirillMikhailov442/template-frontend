@@ -23,6 +23,7 @@
 
 ```bash
 git clone https://github.com/KirillMikhailov442/template-frontend
+cd template-frontend
 git checkout dev
 npm install
 npm run dev
