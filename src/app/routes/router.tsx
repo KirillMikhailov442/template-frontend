@@ -1,4 +1,5 @@
 import MainPage from '@/pages/main';
+import SingleDevicePage from '@/pages/single-device';
 
 import { createBrowserRouter } from 'react-router';
 
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
           {
             path: AppRoute.Editor,
             element: <EditorPage />,
+          },
+          {
+            path: AppRoute.SingleDevice,
+            element: <SingleDevicePage />,
           },
         ],
       },
