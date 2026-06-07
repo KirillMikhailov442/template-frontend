@@ -10,16 +10,28 @@ interface WidgetProps {
   y?: number;
   width: number;
   height: number;
+  text: string;
 }
 
 const snapToGrid = (pos: number) => {
   return Math.round(pos / CELL_SIZE) * CELL_SIZE;
 };
 
-const Widget: FC<WidgetProps> = ({ id, x = 0, y = 0, width, height }) => {
+const Widget: FC<WidgetProps> = ({ id, x = 0, y = 0, width, height, text }) => {
   const [positiion, setPosition] = useState({ x, y });
   const { updateWidgetInBoard } = useEditor();
-
+  const color = () => {
+    switch (text) {
+      case 'Погода':
+        return 'lightblue';
+      case 'Новости':
+        return 'lightgreen';
+      case 'Text':
+        return 'lightyellow';
+      default:
+        return 'lightgray';
+    }
+  };
   return (
     <Group
       id={id}
@@ -66,10 +78,9 @@ const Widget: FC<WidgetProps> = ({ id, x = 0, y = 0, width, height }) => {
       <Rect
         width={width}
         height={height}
-        fill="lightblue"
+        fill={color()}
         stroke="black"
-        strokeWidth={2}
-      />
+        strokeWidth={2}></Rect>
     </Group>
   );
 };

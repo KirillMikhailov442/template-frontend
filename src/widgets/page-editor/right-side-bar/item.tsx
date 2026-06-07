@@ -22,7 +22,7 @@ const Item: FC<ItemProps> = props => {
   };
   return (
     <div
-      className="w-[200px] h-[200px] bg-[var(--color-blue)] my-2 "
+      className="w-[150px] h-[150px] bg-[var(--color-blue)] my-2 flex items-center justify-center rounded cursor-move"
       ref={setNodeRef}
       {...listeners}
       {...attributes}

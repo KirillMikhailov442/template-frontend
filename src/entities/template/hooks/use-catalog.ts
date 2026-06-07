@@ -1,18 +1,25 @@
 import { create } from 'zustand';
 
-import type { IWidget } from '../types/widget';
-
+interface ICatalogItem {
+  id: string;
+  name: string;
+}
 interface CatalogState {
-  catalog: IWidget[];
-  setCatalog: (catalog: IWidget[]) => void;
+  catalog: ICatalogItem[];
+  setCatalog: (catalog: ICatalogItem[]) => void;
+  removeItem: (id: string) => void;
 }
 
 const useCatalog = create<CatalogState>(set => ({
-  catalog: [],
+  catalog: [
+    { id: '1', name: 'Погода' },
+    { id: '2', name: 'Новости' },
+    { id: '3', name: 'Календарь' },
+  ],
   setCatalog: catalog => set({ catalog }),
-  removeItem: (index: number) =>
+  removeItem: (id: string) =>
     set(state => ({
-      catalog: state.catalog.filter((_, i) => i !== index),
+      catalog: state.catalog.filter(item => item.id !== id),
     })),
 }));
 
