@@ -8,6 +8,7 @@ import { AppRoute } from '@shared/constants';
 import AuthorizationLayout from '../layouts/authorization';
 import MainLayout from '../layouts/main';
 import LayoutWithSidebar from '../layouts/sidebar';
+import Templates from '@pages/Templates';
 
 export const router = createBrowserRouter([
   {
@@ -25,9 +26,13 @@ export const router = createBrowserRouter([
             element: <LayoutWithSidebar />,
             children: [
               {
+                path: AppRoute.Templates,
+                element: <Templates/>
+              },
+              {
                 path: AppRoute.Root,
                 element: <div>sdsd</div>,
-              },
+              }
             ],
           },
           {

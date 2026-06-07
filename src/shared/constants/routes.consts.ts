@@ -4,4 +4,5 @@ export enum AppRoute {
   Login = '/login',
   Editor = '/templates/:templateId',
   NotFound = '*',
+  Error = '/error',
 }

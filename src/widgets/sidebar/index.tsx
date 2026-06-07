@@ -7,7 +7,7 @@ import { twMerge } from 'tailwind-merge';
 
 const Sidebar = () => {
   return (
-    <div className="w-[300px] border-r-2 border-[var(--color-gray)] px-3 py-8 bg-[var(--color-white)]">
+    <div className="w-[300px] border-r-2 shrink-0 border-[var(--color-gray)] px-3 py-8 bg-[var(--color-white)]">
       <Logo className="mb-10" />
       <ul className="space-y-2">
         <li>
