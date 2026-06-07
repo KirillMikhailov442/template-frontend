@@ -9,6 +9,7 @@ import {
   PointerSensor,
   useSensor,
   useSensors,
+  type Over,
 } from '@dnd-kit/core';
 
 const EditorPage = () => {
@@ -35,10 +36,16 @@ const EditorPage = () => {
         onDragEnd={event => {
           const { active, over } = event;
 
-          const data = active.data.current;
+          const data = active.data.current as {
+            id: string;
+            type: string;
+          };
           const x =
-            Number(active.rect.current.translated?.left) - over.rect.left;
-          const y = Number(active.rect.current.translated?.top) - over.rect.top;
+            Number(active.rect.current.translated?.left) -
+            (over as Over).rect.left;
+          const y =
+            Number(active.rect.current.translated?.top) -
+            (over as Over).rect.top;
 
           addWidgetInBoard({
             id: data.id,
